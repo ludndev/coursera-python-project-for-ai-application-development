@@ -1,32 +1,61 @@
 import unittest
-from EmotionDetection.emotion_detection import *
+from EmotionDetection.emotion_detection import detect_emotion, predict_emotion
 
 
 class TestEmotionDetection(unittest.TestCase):
+    """Unit tests for the Emotion Detection module."""
+
     def test_emotion_prediction(self):
+        """Test the prediction of emotions based on predefined input data."""
+
         happy_detection = {
             'emotionPredictions': [
-                {'emotion': {'anger': 0.1, 'disgust': 0.05, 'fear': 0.05, 'joy': 0.7, 'sadness': 0.1}}]
+                {
+                    'emotion': {
+                        'anger': 0.1, 'disgust': 0.05, 'fear': 0.05, 'joy': 0.7, 'sadness': 0.1
+                    }
+                }
+            ]
         }
 
         angry_detection = {
             'emotionPredictions': [
-                {'emotion': {'anger': 0.7, 'disgust': 0.1, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.1}}]
+                {
+                    'emotion': {
+                        'anger': 0.7, 'disgust': 0.1, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.1
+                    }
+                }
+            ]
         }
 
         disgusted_detection = {
             'emotionPredictions': [
-                {'emotion': {'anger': 0.05, 'disgust': 0.7, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.1}}]
+                {
+                    'emotion': {
+                        'anger': 0.05, 'disgust': 0.7, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.1
+                    }
+                }
+            ]
         }
 
         sad_detection = {
             'emotionPredictions': [
-                {'emotion': {'anger': 0.1, 'disgust': 0.1, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.7}}]
+                {
+                    'emotion': {
+                        'anger': 0.1, 'disgust': 0.1, 'fear': 0.05, 'joy': 0.05, 'sadness': 0.7
+                    }
+                }
+            ]
         }
 
         afraid_detection = {
             'emotionPredictions': [
-                {'emotion': {'anger': 0.1, 'disgust': 0.05, 'fear': 0.7, 'joy': 0.05, 'sadness': 0.1}}]
+                {
+                    'emotion': {
+                        'anger': 0.1, 'disgust': 0.05, 'fear': 0.7, 'joy': 0.05, 'sadness': 0.1
+                    }
+                }
+            ]
         }
 
         # Run tests on each predefined emotion detection output
@@ -37,6 +66,8 @@ class TestEmotionDetection(unittest.TestCase):
         self.assertEqual(predict_emotion(afraid_detection)['dominant_emotion'], 'fear')
 
     def test_detect_emotion(self):
+        """Test the detection of emotions based on various text inputs."""
+
         text_happy = "I am so thrilled to be here today!"
         text_angry = "This makes me so furious!"
         text_disgusted = "Just thinking about it is disgusting."
